@@ -68,7 +68,7 @@ class _AppTextFieldState extends State<AppTextField> {
             cursorWidth: 1.6.w,
             cursorRadius: Radius.circular(2.r),
             cursorHeight: 15.h,
-            style: Textstyles.font14greyRegular().copyWith(
+            style: Textstyles.font14GreyRegular().copyWith(
               color: ColorPalette.darkBlue,
             ),
 

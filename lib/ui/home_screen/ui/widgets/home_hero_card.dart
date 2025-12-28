@@ -33,12 +33,12 @@ class HomeHeroCard extends StatelessWidget {
                 children: [
                   Text(
                     "احجز ملعبك بسهولة",
-                    style: Textstyles.font22darkBlueExtraBold(),
+                    style: Textstyles.font22DarkBlueExtraBold(),
                   ),
                   verticalSpace(6),
                   Text(
                     "اختار ملعب قريب منك، شوف التقييم والمكان واحجز فورًا.",
-                    style: Textstyles.font14greyRegular(),
+                    style: Textstyles.font14GreyRegular(),
                   ),
                 ],
               ),

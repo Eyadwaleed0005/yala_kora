@@ -10,7 +10,7 @@ class SplashAppName extends StatelessWidget {
   Widget build(BuildContext context) {
     return RichText(
       text: TextSpan(
-        style: Textstyles.font30darkBlueSemiBold(),
+        style: Textstyles.font30DarkBlueSemiBold(),
         children: [
           const TextSpan(text: 'Yala '),
           TextSpan(

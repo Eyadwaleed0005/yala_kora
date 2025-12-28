@@ -31,7 +31,7 @@ class LoginScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SystemUiWrapper(
-      style: AppSystemUi.light(),
+      style: AppSystemUi.dark(),
       child: BlocProvider(
         create: (_) => LoginCubit(),
         child: Scaffold(

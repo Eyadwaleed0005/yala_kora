@@ -5,10 +5,40 @@ import 'package:yalakora/core/style/fontweighthelper.dart';
 
 class Textstyles {
   static const String tajawal = 'Tajawal';
+
+  // ================= WHITE TEXT STYLES =================
+
   static TextStyle font12whitebold() {
     return TextStyle(
       fontSize: 12.sp,
       fontWeight: FontWeightHelper.bold,
+      fontFamily: tajawal,
+      color: ColorPalette.white,
+    );
+  }
+
+  static TextStyle font13whitebold() {
+    return TextStyle(
+      fontSize: 13.sp,
+      fontWeight: FontWeightHelper.bold,
+      fontFamily: tajawal,
+      color: ColorPalette.white,
+    );
+  }
+
+  static TextStyle font15whiteSemiBold() {
+    return TextStyle(
+      fontSize: 15.sp,
+      fontWeight: FontWeightHelper.semiBold,
+      fontFamily: tajawal,
+      color: ColorPalette.white,
+    );
+  }
+
+  static TextStyle font14whiteRegular() {
+    return TextStyle(
+      fontSize: 14.sp,
+      fontWeight: FontWeightHelper.regular,
       fontFamily: tajawal,
       color: ColorPalette.white,
     );
@@ -23,13 +53,35 @@ class Textstyles {
     );
   }
 
-  static TextStyle font30darkBlueSemiBold() {
+  // ================= GREEN TEXT STYLES =================
+
+  static TextStyle font12GreenBold() {
     return TextStyle(
-      fontSize: 30.sp,
-      fontWeight: FontWeightHelper.semiBold,
+      fontSize: 12.sp,
       fontFamily: tajawal,
-      color: ColorPalette.darkBlue,
-      height: 1.1,
+      fontWeight: FontWeightHelper.bold,
+      color: ColorPalette.green,
+    );
+  }
+
+    static TextStyle font15GreenMedium() {
+    return TextStyle(
+      fontSize: 15.sp,
+      fontFamily: tajawal,
+      fontWeight: FontWeightHelper.medium,
+      color: ColorPalette.green,
+    );
+  }
+
+  // ================= GREY TEXT STYLES =================
+
+  static TextStyle font12GreyRegular() {
+    return TextStyle(
+      fontSize: 12.sp,
+      fontWeight: FontWeightHelper.regular,
+      fontFamily: tajawal,
+      color: ColorPalette.grey,
+      height: 1.6,
     );
   }
 
@@ -42,28 +94,16 @@ class Textstyles {
     );
   }
 
-  static TextStyle font16DarkBlueSemiBold() {
+  static TextStyle font13GreyRegular() {
     return TextStyle(
       fontFamily: tajawal,
-      fontSize: 16.sp,
-      fontWeight: FontWeightHelper.semiBold,
-      color: ColorPalette.darkBlue,
+      fontSize: 13.sp,
+      fontWeight: FontWeightHelper.regular,
+      color: ColorPalette.grey,
     );
   }
 
-
-
-  static TextStyle font24darkBlueBold() {
-    return TextStyle(
-      fontSize: 24.sp,
-      fontWeight: FontWeightHelper.bold,
-      fontFamily: tajawal,
-      color: ColorPalette.darkBlue,
-      height: 1.2,
-    );
-  }
-
-  static TextStyle font14greyRegular() {
+  static TextStyle font14GreyRegular() {
     return TextStyle(
       fontSize: 14.sp,
       fontWeight: FontWeightHelper.regular,
@@ -72,64 +112,38 @@ class Textstyles {
       height: 1.6,
     );
   }
-  static TextStyle font12greyRegular() {
+
+  static TextStyle font14GreyMedium() {
     return TextStyle(
-      fontSize: 12.sp,
-      fontWeight: FontWeightHelper.regular,
+      fontSize: 14.sp,
+      fontWeight: FontWeightHelper.medium,
       fontFamily: tajawal,
       color: ColorPalette.grey,
-      height: 1.6,
     );
   }
 
-  static TextStyle font15whiteSemiBold() {
+  static TextStyle font15GreySemiBold() {
     return TextStyle(
       fontSize: 15.sp,
       fontWeight: FontWeightHelper.semiBold,
       fontFamily: tajawal,
-      color: ColorPalette.white,
+      color: ColorPalette.grey,
     );
   }
 
+  // ================= DARK BLUE TEXT STYLES =================
 
-
-  static TextStyle font14darkBlueRegular() {
+  static TextStyle font30DarkBlueSemiBold() {
     return TextStyle(
-      fontSize: 14.sp,
+      fontSize: 30.sp,
+      fontWeight: FontWeightHelper.semiBold,
       fontFamily: tajawal,
-      fontWeight: FontWeightHelper.regular,
       color: ColorPalette.darkBlue,
+      height: 1.1,
     );
   }
 
-  static TextStyle font12redRegularTajawal() {
-    return TextStyle(
-      fontSize: 12.sp,
-      fontFamily: tajawal,
-      fontWeight: FontWeightHelper.regular,
-      color: Colors.red.shade400,
-    );
-  }
-
-  static TextStyle font12blackregular() {
-    return TextStyle(
-      fontSize: 12.sp,
-      fontFamily: tajawal,
-      fontWeight: FontWeightHelper.regular,
-      color: ColorPalette.darkBlue,
-    );
-  }
-
-  static TextStyle font12greenBold() {
-    return TextStyle(
-      fontSize: 12.sp,
-      fontFamily: tajawal,
-      fontWeight: FontWeightHelper.bold,
-      color: ColorPalette.green,
-    );
-  }
-
-  static TextStyle font22darkBlueExtraBold() {
+  static TextStyle font22DarkBlueExtraBold() {
     return TextStyle(
       fontSize: 22.sp,
       fontFamily: tajawal,
@@ -139,12 +153,78 @@ class Textstyles {
     );
   }
 
-  static TextStyle font14whiteRegular() {
+  static TextStyle font24DarkBlueBold() {
+    return TextStyle(
+      fontSize: 24.sp,
+      fontWeight: FontWeightHelper.bold,
+      fontFamily: tajawal,
+      color: ColorPalette.darkBlue,
+      height: 1.2,
+    );
+  }
+
+  static TextStyle font16DarkBlueSemiBold() {
+    return TextStyle(
+      fontFamily: tajawal,
+      fontSize: 16.sp,
+      fontWeight: FontWeightHelper.semiBold,
+      color: ColorPalette.darkBlue,
+    );
+  }
+
+  static TextStyle font17DarkBlueMedium() {
+    return TextStyle(
+      fontSize: 17.sp,
+      fontWeight: FontWeightHelper.medium,
+      fontFamily: tajawal,
+      color: ColorPalette.darkBlue,
+    );
+  }
+
+  static TextStyle font14DarkBlueMedium() {
     return TextStyle(
       fontSize: 14.sp,
-      fontWeight: FontWeightHelper.regular,
+      fontWeight: FontWeightHelper.medium,
       fontFamily: tajawal,
-      color: ColorPalette.white,
+      color: ColorPalette.darkBlue,
+    );
+  }
+
+  static TextStyle font14DarkBlueRegular() {
+    return TextStyle(
+      fontSize: 14.sp,
+      fontFamily: tajawal,
+      fontWeight: FontWeightHelper.regular,
+      color: ColorPalette.darkBlue,
+    );
+  }
+
+  static TextStyle font16DarkBlueMedium() {
+    return TextStyle(
+      fontSize: 16.sp,
+      fontFamily: tajawal,
+      fontWeight: FontWeightHelper.medium,
+      color: ColorPalette.darkBlue,
+    );
+  }
+
+  static TextStyle font12DarkBlueRegular() {
+    return TextStyle(
+      fontSize: 12.sp,
+      fontFamily: tajawal,
+      fontWeight: FontWeightHelper.regular,
+      color: ColorPalette.darkBlue,
+    );
+  }
+
+  // ================= RED TEXT STYLES =================
+
+  static TextStyle font12redRegularTajawal() {
+    return TextStyle(
+      fontSize: 12.sp,
+      fontFamily: tajawal,
+      fontWeight: FontWeightHelper.regular,
+      color: Colors.red.shade400,
     );
   }
 }

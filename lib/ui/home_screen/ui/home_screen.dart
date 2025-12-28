@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:yalakora/core/helper/app_system_ui.dart';
+import 'package:yalakora/core/helper/bottom_nav_router.dart';
 import 'package:yalakora/core/helper/spacer.dart';
+import 'package:yalakora/core/routes/route_names.dart';
 import 'package:yalakora/core/style/app_color.dart';
 import 'package:yalakora/core/widgets/app_bottom_nav_bar.dart';
 import 'package:yalakora/core/widgets/section_title.dart';
@@ -23,13 +25,12 @@ class HomeScreen extends StatelessWidget {
       child: BlocBuilder<HomeScreenCubit, HomeScreenState>(
         builder: (context, state) {
           return SystemUiWrapper(
-            style: AppSystemUi.light(),
+            style: AppSystemUi.dark(),
             child: Scaffold(
               backgroundColor: ColorPalette.offWhite,
               bottomNavigationBar: AppBottomNavBar(
-                currentIndex: state.currentIndex,
-                onTap: (index) =>
-                    context.read<HomeScreenCubit>().changeTab(index),
+                currentIndex: 0,
+                onTap: (index) => BottomNavRouter.go(context, index),
               ),
               body: Column(
                 children: [
@@ -56,9 +57,8 @@ class HomeScreen extends StatelessWidget {
                             padding: EdgeInsets.symmetric(horizontal: 16.w),
                             shrinkWrap: true,
                             physics: const NeverScrollableScrollPhysics(),
-                            itemCount: state.isLoading
-                                ? 3
-                                : state.displayedStadiums.length,
+                            itemCount:
+                                state.isLoading ? 3 : state.displayedStadiums.length,
                             itemBuilder: (context, index) {
                               if (state.isLoading) {
                                 return const StadiumBookingCardSkeleton();
@@ -67,9 +67,15 @@ class HomeScreen extends StatelessWidget {
                               return StadiumBookingCard(
                                 stadiumName: item.name,
                                 location: item.location,
-                                imageUrl: item.imageUrl,
+                                imageUrl: item.coverImage,
                                 rating: item.rating,
-                                onTap: () {},
+                                onTap: () {
+                                  Navigator.pushNamed(
+                                    context,
+                                    RouteNames.stadiumDetailsScreen,
+                                    arguments: item.id,
+                                  );
+                                },
                               );
                             },
                             separatorBuilder: (_, __) => SizedBox(height: 12.h),

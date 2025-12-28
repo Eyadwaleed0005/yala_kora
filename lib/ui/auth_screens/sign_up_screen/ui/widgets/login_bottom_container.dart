@@ -24,7 +24,7 @@ class LoginBottomContainer extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
         if (title != null) ...[
-          Text(title!, style: Textstyles.font22darkBlueExtraBold()),
+          Text(title!, style: Textstyles.font22DarkBlueExtraBold()),
           verticalSpace(16),
         ],
         child,

@@ -1,3 +1,5 @@
+// lib/core/widgets/stadium_booking_card/stadium_booking_card.dart
+
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:yalakora/core/helper/spacer.dart';
@@ -26,93 +28,96 @@ class StadiumBookingCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Directionality(
       textDirection: TextDirection.rtl,
-      child: Container(
-        decoration: BoxDecoration(
-          color: ColorPalette.white,
-          borderRadius: BorderRadius.circular(16.r),
-          border: Border.all(color: ColorPalette.borderGrey),
-          boxShadow: [
-            BoxShadow(
-              color: ColorPalette.overlayGrey,
-              blurRadius: 16.r,
-              offset: const Offset(0, 8),
-            ),
-          ],
-        ),
-        child: ClipRRect(
-          borderRadius: BorderRadius.circular(16.r),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              _StadiumCover(imageUrl: imageUrl),
-              Padding(
-                padding: EdgeInsets.all(12.w),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Row(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Expanded(
-                          flex: 3,
-                          child: Text(
-                            stadiumName,
-                            maxLines: 2,
-                            overflow: TextOverflow.ellipsis,
-                            style: Textstyles.font16DarkBlueSemiBold(),
-                          ),
-                        ),
-                        horizontalSpace(6),
-                        _RatingStars(rating: rating),
-                      ],
-                    ),
-                    verticalSpace(10),
-                    Row(
-                      children: [
-                        Icon(
-                          Icons.location_on_outlined,
-                          size: 15.sp,
-                          color: ColorPalette.grey,
-                        ),
-                        SizedBox(width: 6.w),
-                        Expanded(
-                          child: Text(
-                            location,
-                            maxLines: 2,
-                            overflow: TextOverflow.ellipsis,
-                            style: Textstyles.font13GreyMedium(),
-                          ),
-                        ),
-                      ],
-                    ),
-
-                    verticalSpace(12),
-                    Align(
-                      alignment: Alignment.centerLeft,
-                      child: SizedBox(
-                        height: 38.h,
-                        child: ElevatedButton(
-                          onPressed: onTap,
-                          style: ElevatedButton.styleFrom(
-                            backgroundColor: ColorPalette.darkBlue,
-                            foregroundColor: ColorPalette.white,
-                            elevation: 0,
-                            padding: EdgeInsets.symmetric(horizontal: 14.w),
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(12.r),
+      child: InkWell(
+        onTap: onTap,
+        borderRadius: BorderRadius.circular(16.r),
+        child: Container(
+          decoration: BoxDecoration(
+            color: ColorPalette.white,
+            borderRadius: BorderRadius.circular(16.r),
+            border: Border.all(color: ColorPalette.borderGrey),
+            boxShadow: [
+              BoxShadow(
+                color: ColorPalette.overlayGrey,
+                blurRadius: 16.r,
+                offset: const Offset(0, 8),
+              ),
+            ],
+          ),
+          child: ClipRRect(
+            borderRadius: BorderRadius.circular(16.r),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                _StadiumCover(imageUrl: imageUrl),
+                Padding(
+                  padding: EdgeInsets.all(12.w),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Row(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Expanded(
+                            flex: 3,
+                            child: Text(
+                              stadiumName,
+                              maxLines: 2,
+                              overflow: TextOverflow.ellipsis,
+                              style: Textstyles.font16DarkBlueSemiBold(),
                             ),
                           ),
-                          child: Text(
-                            buttonText,
-                            style: Textstyles.font14whiteRegular(),
+                          horizontalSpace(6),
+                          _RatingStars(rating: rating),
+                        ],
+                      ),
+                      verticalSpace(10),
+                      Row(
+                        children: [
+                          Icon(
+                            Icons.location_on_outlined,
+                            size: 15.sp,
+                            color: ColorPalette.grey,
+                          ),
+                          SizedBox(width: 6.w),
+                          Expanded(
+                            child: Text(
+                              location,
+                              maxLines: 2,
+                              overflow: TextOverflow.ellipsis,
+                              style: Textstyles.font13GreyMedium(),
+                            ),
+                          ),
+                        ],
+                      ),
+                      verticalSpace(12),
+                      Align(
+                        alignment: Alignment.centerLeft,
+                        child: SizedBox(
+                          height: 38.h,
+                          child: ElevatedButton(
+                            onPressed: onTap,
+                            style: ElevatedButton.styleFrom(
+                              backgroundColor: ColorPalette.darkBlue,
+                              foregroundColor: ColorPalette.white,
+                              elevation: 0,
+                              padding: EdgeInsets.symmetric(horizontal: 14.w),
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(12.r),
+                              ),
+                            ),
+                            child: Text(
+                              buttonText,
+                              style: Textstyles.font14whiteRegular(),
+                            ),
                           ),
                         ),
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
         ),
       ),
@@ -171,14 +176,14 @@ class _RatingStars extends StatelessWidget {
                   : (i == fullStars && hasHalf)
                       ? Icons.star_half
                       : Icons.star_border,
-              size: 13.sp, 
+              size: 13.sp,
               color: ColorPalette.orange,
             ),
           ),
         horizontalSpace(4),
         Text(
           clamped.toStringAsFixed(1),
-          style: Textstyles.font12greyRegular(),
+          style: Textstyles.font12GreyRegular(),
         ),
       ],
     );

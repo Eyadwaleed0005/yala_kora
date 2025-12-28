@@ -106,7 +106,7 @@ class _NavItem extends StatelessWidget {
               maxLines: 1,
               overflow: TextOverflow.ellipsis,
               textAlign: TextAlign.center,
-              style: Textstyles.font12greyRegular().copyWith(
+              style: Textstyles.font12GreyRegular().copyWith(
                 fontSize: 8.sp,
                 fontWeight: FontWeight.w600,
                 color: isActive ? activeColor : inactiveColor,

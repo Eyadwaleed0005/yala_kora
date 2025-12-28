@@ -42,7 +42,7 @@ class StartHero extends StatelessWidget {
         Text(
           title,
           textAlign: TextAlign.center,
-          style: Textstyles.font24darkBlueBold(),
+          style: Textstyles.font24DarkBlueBold(),
         ).animate().fadeIn(delay: 150.ms).slideY(begin: 0.15, end: 0),
 
         verticalSpace(10),
@@ -50,7 +50,7 @@ class StartHero extends StatelessWidget {
         Text(
           description,
           textAlign: TextAlign.center,
-          style: Textstyles.font14greyRegular(),
+          style: Textstyles.font14GreyRegular(),
         ).animate().fadeIn(delay: 280.ms).slideY(begin: 0.15, end: 0),
       ],
     );

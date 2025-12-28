@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:intl/date_symbol_data_local.dart';
 import 'package:yalakora/core/dio_helper/dio_helper.dart';
 import 'package:yalakora/core/local/shared_preferences.dart';
 import 'package:yalakora/core/routes/app_routes.dart';
@@ -9,6 +10,7 @@ Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await ScreenUtil.ensureScreenSize();
   await SharedPreferencesHelper.init();
+  await initializeDateFormatting('ar'); 
   DioHelper.init();
   runApp(const MyApp());
 }
