@@ -36,7 +36,7 @@ class _StadiumDatesStripState extends State<StadiumDatesStrip> {
     return Directionality(
       textDirection: TextDirection.rtl,
       child: SizedBox(
-        height: 102.h,
+        height: 100.h,
         child: ListView.separated(
           clipBehavior: Clip.hardEdge,
           scrollDirection: Axis.horizontal,

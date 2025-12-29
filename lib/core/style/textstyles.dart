@@ -73,6 +73,15 @@ class Textstyles {
     );
   }
 
+   static TextStyle font15GreenBold() {
+    return TextStyle(
+      fontSize: 15.sp,
+      fontFamily: tajawal,
+      fontWeight: FontWeightHelper.bold,
+      color: ColorPalette.green,
+    );
+  }
+  
   // ================= GREY TEXT STYLES =================
 
   static TextStyle font12GreyRegular() {
@@ -82,6 +91,15 @@ class Textstyles {
       fontFamily: tajawal,
       color: ColorPalette.grey,
       height: 1.6,
+    );
+  }
+
+   static TextStyle font10GreyMedium() {
+    return TextStyle(
+      fontSize: 10.sp,
+      fontWeight: FontWeightHelper.medium,
+      fontFamily: tajawal,
+      color: ColorPalette.grey,
     );
   }
 
@@ -110,6 +128,14 @@ class Textstyles {
       fontFamily: tajawal,
       color: ColorPalette.grey,
       height: 1.6,
+    );
+  }
+  static TextStyle font16GreyRegular() {
+    return TextStyle(
+      fontSize: 16.sp,
+      fontWeight: FontWeightHelper.regular,
+      fontFamily: tajawal,
+      color: ColorPalette.grey,
     );
   }
 

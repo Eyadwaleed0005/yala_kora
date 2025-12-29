@@ -83,10 +83,13 @@ class StadiumDetailsScreen extends StatelessWidget {
                       ),
                     ),
                     verticalSpace(20),
+
                     BookingDetailsCard(
                       dateItems: dateItems,
+                      pricePerHour: stadium.pricePerHour ?? 0,
                       onDateSelected: (date) {},
                     ),
+
                     verticalSpace(30),
                   ],
                 ),

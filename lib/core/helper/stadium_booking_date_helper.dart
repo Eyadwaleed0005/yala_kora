@@ -1,12 +1,11 @@
 import 'package:intl/intl.dart';
 
-/// عنصر واحد في شريط التواريخ (اليوم + التاريخ + الشهر + متاح/إجازة)
 class StadiumDateItem {
   final DateTime date;
-  final String dayName;   // الأحد
-  final String dayNumber; // 2
-  final String monthName; // أبريل
-  final bool isOpen;      // true متاح - false إجازة
+  final String dayName;
+  final String dayNumber;
+  final String monthName;
+  final bool isOpen;
 
   const StadiumDateItem({
     required this.date,
@@ -20,23 +19,20 @@ class StadiumDateItem {
 class StadiumBookingDateHelper {
   StadiumBookingDateHelper._();
 
-  /// يبني شريط تواريخ متتالي من تاريخ الموبايل.
-  /// - count: عدد الكروت اللي هتعرضها (مثلاً 8)
-  /// - workingDays: أيام عمل الملعب (1=Mon..7=Sun) زي DateTime.weekday
   static List<StadiumDateItem> buildDateStrip({
     required List<int>? workingDays,
     int count = 8,
     String locale = 'ar',
-    DateTime? fromDate,
+    DateTime? fromDate, 
   }) {
     final now = fromDate ?? DateTime.now();
     final start = DateTime(now.year, now.month, now.day);
 
     final days = workingDays ?? const <int>[];
 
-    final dayFormatter = DateFormat('EEEE', locale); // الأحد
-    final dayNumFormatter = DateFormat('d', locale); // 2
-    final monthFormatter = DateFormat('MMMM', locale); // أبريل
+    final dayFormatter = DateFormat('EEEE', locale);
+    final dayNumFormatter = DateFormat('d', locale);
+    final monthFormatter = DateFormat('MMMM', locale);
 
     return List.generate(count, (i) {
       final date = start.add(Duration(days: i));
@@ -51,10 +47,5 @@ class StadiumBookingDateHelper {
       );
     });
   }
-
-  /// هل تاريخ معيّن متاح للحجز حسب workingDays؟
-  static bool isDateOpen(DateTime date, List<int>? workingDays) {
-    final days = workingDays ?? const <int>[];
-    return days.isEmpty ? true : days.contains(date.weekday);
-  }
 }
+
