@@ -53,7 +53,7 @@ class AppButton extends StatelessWidget {
                     ? Text(
                         key: const ValueKey('text_only'),
                         title,
-                        style: textStyle ?? Textstyles.font12whitebold(),
+                        style: textStyle ?? Textstyles.font16Whitebold(),
                       )
                     : Row(
                         key: const ValueKey('text_with_icon'),
@@ -63,7 +63,7 @@ class AppButton extends StatelessWidget {
                           SizedBox(width: iconSpacing ?? 8.w),
                           Text(
                             title,
-                            style: textStyle ?? Textstyles.font12whitebold(),
+                            style: textStyle ?? Textstyles.font16Whitebold(),
                           ),
                         ],
                       )),

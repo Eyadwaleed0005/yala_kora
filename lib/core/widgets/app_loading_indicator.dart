@@ -7,7 +7,7 @@ class AppLoadingIndicator extends StatelessWidget {
     super.key,
     this.color = ColorPalette.white, 
     this.size = 18,
-    this.strokeWidth = 3.2,
+    this.strokeWidth = 3,
   });
 
   final Color color;
@@ -20,7 +20,7 @@ class AppLoadingIndicator extends StatelessWidget {
       height: size.h,
       width: size.w,
       child: CircularProgressIndicator(
-        strokeWidth: strokeWidth,
+        strokeWidth: strokeWidth.w,
         valueColor: AlwaysStoppedAnimation<Color>(color),
       ),
     );

@@ -1,9 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:yalakora/core/helper/spacer.dart';
-import 'package:yalakora/core/style/app_color.dart';
-import 'package:yalakora/core/style/textstyles.dart';
-import 'package:yalakora/core/widgets/section_title.dart';
+import 'package:yalakora/ui/stadium_details_screen/ui/widgets/stadium_time_slots_widgets/extra_slots_header.dart';
 import 'package:yalakora/ui/stadium_details_screen/ui/widgets/stadium_time_slots_widgets/stadium_time_slots_grid.dart';
 
 class StadiumSlotsSection extends StatefulWidget {
@@ -16,7 +13,6 @@ class StadiumSlotsSection extends StatefulWidget {
 
   final List<SlotUiModel> normalSlots;
   final List<SlotUiModel> extraSlots;
-
   final void Function(String slotLabel, bool isExtra)? onSlotSelected;
 
   @override
@@ -55,17 +51,7 @@ class _StadiumSlotsSectionState extends State<StadiumSlotsSection> {
         ),
         if (widget.extraSlots.isNotEmpty) ...[
           verticalSpace(14),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.end,
-            children: [
-              Icon(Icons.info_outline, size: 16.sp, color: ColorPalette.grey),
-              horizontalSpace(6),
-              SectionTitle(
-                title: "مواعيد إضافية",
-                textStyle: Textstyles.font15GreySemiBold(),
-              ),
-            ],
-          ),
+          const ExtraSlotsHeader(),
           verticalSpace(10),
           StadiumTimeSlotsGrid(
             slots: widget.extraSlots,

@@ -15,7 +15,9 @@ class ColorPalette {
 
   // ===== Grey =====
   static const Color grey = Color(0xFF64748B);
+  static const Color gray200 = Color(0xFFE5E7EB);
   static const Color lightGrey = Color(0xFFCBD5E1);
+  static const Color gray400 = Color(0xFF9CA3AF);
   static const Color darkGrey = Color(0xFF475569);
 
   // ===== Borders & overlays =====

@@ -40,19 +40,11 @@ class StadiumModel {
   final double? lng;
 
   final num? pricePerHour;
-
-  /// 1=Mon..7=Sun (DateTime.weekday)
   final List<int>? workingDays;
-
-  /// 0..1440 (24:00 = 1440)
   final int? openMinutes;
   final int? closeMinutes;
-
-  /// 0..1440 (24:00 = 1440)
   final int? extraOpenMinutes;
   final int? extraCloseMinutes;
-
-  /// خطوة توليد الـ slots
   final int slotStepMinutes;
 
   // ================== Getters ==================
@@ -64,8 +56,6 @@ class StadiumModel {
 
   bool get hasNormalShift =>
       openMinutes != null && closeMinutes != null;
-
-  /// هل الشيفت بيعدّي بعد نص الليل؟
   bool get normalCrossMidnight =>
       hasNormalShift && closeMinutes! < openMinutes!;
 
@@ -93,7 +83,6 @@ class StadiumModel {
         extraOpenMinutes != extraCloseMinutes;
   }
 
-  /// استخدم دي قبل أي حساب وقت
   bool get isValidTimeConfig =>
       isValidStep && isValidNormalShift && isValidExtraShift;
 

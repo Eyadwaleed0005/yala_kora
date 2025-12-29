@@ -26,6 +26,15 @@ class Textstyles {
     );
   }
 
+  static TextStyle font16Whitebold() {
+    return TextStyle(
+      fontSize: 16.sp,
+      fontWeight: FontWeightHelper.bold,
+      fontFamily: tajawal,
+      color: ColorPalette.white,
+    );
+  }
+
   static TextStyle font15whiteSemiBold() {
     return TextStyle(
       fontSize: 15.sp,
@@ -64,7 +73,7 @@ class Textstyles {
     );
   }
 
-    static TextStyle font15GreenMedium() {
+  static TextStyle font15GreenMedium() {
     return TextStyle(
       fontSize: 15.sp,
       fontFamily: tajawal,
@@ -73,7 +82,7 @@ class Textstyles {
     );
   }
 
-   static TextStyle font15GreenBold() {
+  static TextStyle font15GreenBold() {
     return TextStyle(
       fontSize: 15.sp,
       fontFamily: tajawal,
@@ -81,7 +90,7 @@ class Textstyles {
       color: ColorPalette.green,
     );
   }
-  
+
   // ================= GREY TEXT STYLES =================
 
   static TextStyle font12GreyRegular() {
@@ -94,7 +103,7 @@ class Textstyles {
     );
   }
 
-   static TextStyle font10GreyMedium() {
+  static TextStyle font10GreyMedium() {
     return TextStyle(
       fontSize: 10.sp,
       fontWeight: FontWeightHelper.medium,
@@ -130,6 +139,7 @@ class Textstyles {
       height: 1.6,
     );
   }
+
   static TextStyle font16GreyRegular() {
     return TextStyle(
       fontSize: 16.sp,
@@ -154,6 +164,15 @@ class Textstyles {
       fontWeight: FontWeightHelper.semiBold,
       fontFamily: tajawal,
       color: ColorPalette.grey,
+    );
+  }
+
+  static TextStyle font16Gray400Bold() {
+    return TextStyle(
+      fontSize: 16.sp,
+      fontWeight: FontWeightHelper.bold,
+      fontFamily: tajawal,
+      color: ColorPalette.gray400,
     );
   }
 

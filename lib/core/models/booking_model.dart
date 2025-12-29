@@ -10,10 +10,8 @@ class BookingModel {
 
   final String id;
   final String stadiumId;
-
   final DateTime start;
   final DateTime end;
-
   final int durationMinutes;
   final String userId;
 
