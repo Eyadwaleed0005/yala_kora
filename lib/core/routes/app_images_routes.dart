@@ -18,4 +18,5 @@ class AppImage {
   late final String onboarding2 = '${baseImages}onboarding_2.png';
   late final String onboarding3 = '${baseImages}onboarding_3.png';
   late final String registerFootball = '${baseImages}register_football.png';
+  late final String defaultProfileImage = '${baseImages}default_profile.png';
 }

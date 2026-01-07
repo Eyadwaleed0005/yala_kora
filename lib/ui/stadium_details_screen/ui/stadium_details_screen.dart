@@ -8,6 +8,7 @@ import 'package:yalakora/core/helper/app_system_ui.dart';
 import 'package:yalakora/core/helper/spacer.dart';
 import 'package:yalakora/core/style/app_color.dart';
 import 'package:yalakora/core/style/textstyles.dart';
+import 'package:yalakora/core/widgets/app_button.dart';
 import 'package:yalakora/core/widgets/section_title.dart';
 import 'package:yalakora/core/widgets/system_ui_wrapper.dart';
 import 'package:yalakora/core/helper/stadium_booking_date_helper.dart';
@@ -17,7 +18,6 @@ import 'package:yalakora/ui/stadium_details_screen/ui/widgets/green_outline_acti
 import 'package:yalakora/ui/stadium_details_screen/ui/widgets/stadium_basic_info_card.dart';
 import 'package:yalakora/ui/stadium_details_screen/ui/widgets/stadium_details_cover.dart';
 import 'package:yalakora/ui/stadium_details_screen/ui/widgets/booking_details_card.dart';
-import 'package:yalakora/ui/stadium_details_screen/ui/widgets/booking_confirm_button.dart';
 import 'package:yalakora/ui/stadium_details_screen/ui/widgets/stadium_time_slots_widgets/stadium_time_slots_grid.dart';
 import 'package:yalakora/ui/stadium_details_screen/ui/widgets/stadium_description.dart';
 
@@ -195,10 +195,11 @@ class StadiumDetailsScreen extends StatelessWidget {
                                 maxLines: 3,
                               ),
                               verticalSpace(20),
-                              BookingConfirmButton(
+                              AppButton(
                                 isEnabled: cubit.canSubmit,
                                 isLoading: state.isSubmitting,
                                 onPressed: () => cubit.submitBooking(),
+                                title: 'تأكيد الحجز',
                               ),
                             ],
                           );

@@ -71,7 +71,6 @@ class _AppTextFieldState extends State<AppTextField> {
             style: Textstyles.font14GreyRegular().copyWith(
               color: ColorPalette.darkBlue,
             ),
-
             decoration: InputDecoration(
               labelText: widget.labelText,
               labelStyle: Textstyles.font13GreyMedium(),
@@ -79,12 +78,9 @@ class _AppTextFieldState extends State<AppTextField> {
                 color: ColorPalette.darkBlue,
                 fontSize: 11.sp,
               ),
-
               filled: true,
-              fillColor: widget.enabled
-                  ? ColorPalette.white
-                  : ColorPalette.offWhite,
-
+              fillColor:
+                  widget.enabled ? ColorPalette.white : ColorPalette.offWhite,
               prefixIcon: widget.prefixIcon != null
                   ? Icon(
                       widget.prefixIcon,
@@ -92,26 +88,30 @@ class _AppTextFieldState extends State<AppTextField> {
                       color: ColorPalette.grey,
                     )
                   : null,
-
-              suffixIcon: widget.isPassword
-                  ? IconButton(
-                      icon: Icon(
-                        _obscurePassword
-                            ? Icons.visibility_off_outlined
-                            : Icons.visibility_outlined,
-                        color: ColorPalette.grey,
-                        size: 20.sp,
-                      ),
-                      onPressed: () {
-                        setState(() => _obscurePassword = !_obscurePassword);
-                      },
+              suffixIcon: !widget.enabled
+                  ? Icon(
+                      Icons.lock_outline_rounded,
+                      color: ColorPalette.grey,
+                      size: 18.sp,
                     )
-                  : null,
-
-              contentPadding:
-                  widget.contentPadding ??
+                  : (widget.isPassword
+                      ? IconButton(
+                          icon: Icon(
+                            _obscurePassword
+                                ? Icons.visibility_off_outlined
+                                : Icons.visibility_outlined,
+                            color: ColorPalette.grey,
+                            size: 20.sp,
+                          ),
+                          onPressed: () {
+                            setState(
+                              () => _obscurePassword = !_obscurePassword,
+                            );
+                          },
+                        )
+                      : null),
+              contentPadding: widget.contentPadding ??
                   EdgeInsets.symmetric(horizontal: 14.w, vertical: 10.h),
-
               enabledBorder: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(borderRadius),
                 borderSide: BorderSide(

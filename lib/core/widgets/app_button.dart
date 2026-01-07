@@ -7,67 +7,49 @@ import 'package:yalakora/core/widgets/app_loading_indicator.dart';
 class AppButton extends StatelessWidget {
   const AppButton({
     super.key,
-    required this.title,
+    this.isEnabled = true,
+    required this.isLoading,
     required this.onPressed,
-    this.height,
-    this.borderRadius,
-    this.backgroundColor,
-    this.textStyle,
-    this.isLoading = false,
-    this.icon,
-    this.iconSpacing,
+    required this.title,
   });
 
-  final String title;
-  final VoidCallback onPressed;
-  final double? height;
-  final double? borderRadius;
-  final Color? backgroundColor;
-  final TextStyle? textStyle;
+  final bool isEnabled;
   final bool isLoading;
-
-  final Widget? icon;
-  final double? iconSpacing;
+  final VoidCallback? onPressed;
+  final String title;
 
   @override
   Widget build(BuildContext context) {
+    final enabled = isEnabled && !isLoading;
+
     return SizedBox(
-      height: height ?? 48.h,
       width: double.infinity,
+      height: 50.h,
       child: ElevatedButton(
+        onPressed: enabled ? onPressed : null,
         style: ElevatedButton.styleFrom(
-          backgroundColor: backgroundColor ?? ColorPalette.green,
-          disabledBackgroundColor: ColorPalette.green.withOpacity(0.55),
+          backgroundColor:
+              enabled ? ColorPalette.green : ColorPalette.gray200,
+          disabledBackgroundColor: ColorPalette.gray200,
+          elevation: 0,
           shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(borderRadius ?? 12.r),
+            borderRadius: BorderRadius.circular(14.r),
           ),
         ),
-        onPressed: isLoading ? null : onPressed,
-        child: AnimatedSwitcher(
-          duration: const Duration(milliseconds: 250),
-          transitionBuilder: (child, animation) =>
-              FadeTransition(opacity: animation, child: child),
-          child: isLoading
-              ? const AppLoadingIndicator(key: ValueKey('loader'))
-              : (icon == null
-                    ? Text(
-                        key: const ValueKey('text_only'),
-                        title,
-                        style: textStyle ?? Textstyles.font16Whitebold(),
-                      )
-                    : Row(
-                        key: const ValueKey('text_with_icon'),
-                        mainAxisSize: MainAxisSize.min,
-                        children: [
-                          icon!,
-                          SizedBox(width: iconSpacing ?? 8.w),
-                          Text(
-                            title,
-                            style: textStyle ?? Textstyles.font16Whitebold(),
-                          ),
-                        ],
-                      )),
-        ),
+        child: isLoading
+            ? SizedBox(
+                height: 22.h,
+                width: 22.h,
+                child: const AppLoadingIndicator(
+                  color: ColorPalette.green,
+                ),
+              )
+            : Text(
+                title,
+                style: enabled
+                    ? Textstyles.font16Whitebold()
+                    : Textstyles.font16Gray400Bold(),
+              ),
       ),
     );
   }

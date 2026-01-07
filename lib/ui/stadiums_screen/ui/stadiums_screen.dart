@@ -60,7 +60,8 @@ class _StadiumsScreenState extends State<StadiumsScreen> {
           if (_cityController.text != state.cityQuery) {
             _cityController.value = TextEditingValue(
               text: state.cityQuery,
-              selection: TextSelection.collapsed(offset: state.cityQuery.length),
+              selection:
+                  TextSelection.collapsed(offset: state.cityQuery.length),
             );
           }
 
@@ -74,7 +75,8 @@ class _StadiumsScreenState extends State<StadiumsScreen> {
               ),
               body: SafeArea(
                 child: Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 18.h),
+                  padding:
+                      EdgeInsets.symmetric(horizontal: 16.w, vertical: 18.h),
                   child: Column(
                     children: [
                       AppSearchField(
@@ -101,17 +103,18 @@ class _StadiumsScreenState extends State<StadiumsScreen> {
                                 physics: const BouncingScrollPhysics(),
                                 itemCount: 6,
                                 separatorBuilder: (_, __) =>
-                                    SizedBox(height: 12.h),
+                                    verticalSpace(12),
                                 itemBuilder: (_, __) =>
                                     const StadiumBookingCardSkeleton(),
                               )
                             : data.isEmpty
                                 ? const Center(child: Text('لا توجد نتائج'))
                                 : ListView.separated(
-                                    physics: const BouncingScrollPhysics(),
+                                    physics:
+                                        const BouncingScrollPhysics(),
                                     itemCount: data.length,
                                     separatorBuilder: (_, __) =>
-                                        SizedBox(height: 12.h),
+                                        verticalSpace(12),
                                     itemBuilder: (context, index) {
                                       final stadium = data[index];
                                       return StadiumBookingCard(
@@ -119,10 +122,11 @@ class _StadiumsScreenState extends State<StadiumsScreen> {
                                         location: stadium.location,
                                         imageUrl: stadium.coverImage,
                                         rating: stadium.rating,
-                                        onTap: () {
+                                        onBookTap: () {
                                           Navigator.pushNamed(
                                             context,
-                                            RouteNames.stadiumDetailsScreen,
+                                            RouteNames
+                                                .stadiumDetailsScreen,
                                             arguments: stadium.id,
                                           );
                                         },

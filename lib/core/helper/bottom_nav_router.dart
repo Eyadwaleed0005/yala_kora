@@ -13,9 +13,9 @@ class BottomNavRouter {
       case 2:
         return RouteNames.stadiumsScreen;
      /* case 3:
-        return RouteNames.purchasesScreen;
+        return RouteNames.purchasesScreen;*/
       case 4:
-        return RouteNames.profileScreen;*/
+        return RouteNames.profileScreen;
       default:
         return RouteNames.homeScreen;
     }

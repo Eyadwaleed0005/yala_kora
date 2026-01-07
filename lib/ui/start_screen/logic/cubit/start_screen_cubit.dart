@@ -1,6 +1,6 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:yalakora/core/local/shared_preference_keys.dart';
-import 'package:yalakora/core/local/shared_preferences.dart';
+import 'package:yalakora/core/local/shared_preferences/shared_preference_keys.dart';
+import 'package:yalakora/core/local/shared_preferences/shared_preferences.dart';
 import 'start_screen_state.dart';
 
 class StartScreenCubit extends Cubit<StartScreenState> {

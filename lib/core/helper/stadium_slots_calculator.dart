@@ -41,17 +41,12 @@ class StadiumSlotsCalculator {
     required List<BookingModel> bookings,
     required int durationMinutes,
     String timeLabelLocale = 'ar',
+    DateTime? nowOverride,
+    int minLeadMinutes = 5,
   }) {
     final day = DateTime(selectedDay.year, selectedDay.month, selectedDay.day);
 
-    if (!stadium.isWorkingDay(day)) {
-      return const StadiumSlotResult(
-        normal: SlotGroup([]),
-        extra: SlotGroup([]),
-      );
-    }
-
-    if (!stadium.isValidTimeConfig) {
+    if (!stadium.isWorkingDay(day) || !stadium.isValidTimeConfig) {
       return const StadiumSlotResult(
         normal: SlotGroup([]),
         extra: SlotGroup([]),
@@ -63,42 +58,45 @@ class StadiumSlotsCalculator {
     final normalRanges = _buildNormalRanges(stadium, day);
     final extraRanges = _buildExtraRangesForSelectedDay(stadium, day);
 
-    final normal = _buildSlotsFromRanges(
-      ranges: normalRanges,
-      stepMinutes: step,
-      durationMinutes: durationMinutes,
-      bookings: bookings,
-      locale: timeLabelLocale,
-    );
-
-    final extra = _buildSlotsFromRanges(
-      ranges: extraRanges,
-      stepMinutes: step,
-      durationMinutes: durationMinutes,
-      bookings: bookings,
-      locale: timeLabelLocale,
-    );
+    final now = nowOverride ?? DateTime.now();
 
     return StadiumSlotResult(
-      normal: SlotGroup(normal),
-      extra: SlotGroup(extra),
+      normal: SlotGroup(
+        _buildSlotsFromRanges(
+          ranges: normalRanges,
+          stepMinutes: step,
+          durationMinutes: durationMinutes,
+          bookings: bookings,
+          locale: timeLabelLocale,
+          selectedDay: day,
+          now: now,
+          minLeadMinutes: minLeadMinutes,
+        ),
+      ),
+      extra: SlotGroup(
+        _buildSlotsFromRanges(
+          ranges: extraRanges,
+          stepMinutes: step,
+          durationMinutes: durationMinutes,
+          bookings: bookings,
+          locale: timeLabelLocale,
+          selectedDay: day,
+          now: now,
+          minLeadMinutes: minLeadMinutes,
+        ),
+      ),
     );
   }
 
   static List<_Range> _buildNormalRanges(StadiumModel stadium, DateTime day) {
     if (!stadium.hasNormalShift || !stadium.isValidNormalShift) return [];
 
-    final openM = stadium.openMinutes!;
-    final closeM = stadium.closeMinutes!;
-
-    final start = day.add(Duration(minutes: openM));
-
-    // Normal ينتهي عند 12:00 (نهاية اليوم) كحد أقصى
-    final normalizedClose = closeM > 1440 ? 1440 : closeM;
-    final end = day.add(Duration(minutes: normalizedClose));
+    final start = day.add(Duration(minutes: stadium.openMinutes!));
+    final end = day.add(
+      Duration(minutes: stadium.closeMinutes!.clamp(0, 1440)),
+    );
 
     if (!start.isBefore(end)) return [];
-
     return [_Range(start, end)];
   }
 
@@ -108,17 +106,12 @@ class StadiumSlotsCalculator {
   ) {
     if (!stadium.hasExtraShift || !stadium.isValidExtraShift) return [];
 
-    final extraCloseM = stadium.extraCloseMinutes!;
-    if (extraCloseM <= 0) return [];
+    final end = day.add(
+      Duration(minutes: stadium.extraCloseMinutes!.clamp(0, 1440)),
+    );
 
-    // ✅ Extra في نفس اليوم المختار: من 00:00 إلى extraCloseMinutes
-    final start = day; // 00:00
-    final normalizedClose = extraCloseM > 1440 ? 1440 : extraCloseM;
-    final end = day.add(Duration(minutes: normalizedClose));
-
-    if (!start.isBefore(end)) return [];
-
-    return [_Range(start, end)];
+    if (!day.isBefore(end)) return [];
+    return [_Range(day, end)];
   }
 
   static List<SlotUiItem> _buildSlotsFromRanges({
@@ -127,9 +120,14 @@ class StadiumSlotsCalculator {
     required int durationMinutes,
     required List<BookingModel> bookings,
     required String locale,
+    required DateTime selectedDay,
+    required DateTime now,
+    required int minLeadMinutes,
   }) {
     if (durationMinutes <= 0) return [];
 
+    final isToday = _isSameDay(selectedDay, now);
+    final nowWithLead = now.add(Duration(minutes: minLeadMinutes));
     final out = <SlotUiItem>[];
 
     for (final r in ranges) {
@@ -139,14 +137,19 @@ class StadiumSlotsCalculator {
         final end = cursor.add(Duration(minutes: durationMinutes));
         if (end.isAfter(r.end)) break;
 
-        final isBusy = bookings.any((b) => b.overlaps(cursor, end));
+        final passed = isToday && cursor.isBefore(now);
+        final tooSoon = isToday && !passed && cursor.isBefore(nowWithLead);
+        final busy = bookings.any((b) => b.overlaps(cursor, end));
 
         out.add(
           SlotUiItem(
-            label: StadiumTimeFormatHelper.formatSlotLabel(cursor, locale: locale),
+            label: StadiumTimeFormatHelper.formatSlotLabel(
+              cursor,
+              locale: locale,
+            ),
             start: cursor,
             end: end,
-            isDisabled: isBusy,
+            isDisabled: passed || tooSoon || busy,
           ),
         );
 
@@ -157,6 +160,10 @@ class StadiumSlotsCalculator {
 
     out.sort((a, b) => a.start.compareTo(b.start));
     return out;
+  }
+
+  static bool _isSameDay(DateTime a, DateTime b) {
+    return a.year == b.year && a.month == b.month && a.day == b.day;
   }
 }
 

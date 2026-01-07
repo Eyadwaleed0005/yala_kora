@@ -1,8 +1,8 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:yalakora/core/local/secure_storage.dart';
-import 'package:yalakora/core/local/secure_storage_keys.dart';
-import 'package:yalakora/core/local/shared_preference_keys.dart';
-import 'package:yalakora/core/local/shared_preferences.dart';
+import 'package:yalakora/core/local/secure_storage/secure_storage.dart';
+import 'package:yalakora/core/local/secure_storage/secure_storage_keys.dart';
+import 'package:yalakora/core/local/shared_preferences/shared_preference_keys.dart';
+import 'package:yalakora/core/local/shared_preferences/shared_preferences.dart';
 import 'splash_screen_state.dart';
 
 class SplashScreenCubit extends Cubit<SplashScreenState> {

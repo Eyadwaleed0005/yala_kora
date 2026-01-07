@@ -57,8 +57,9 @@ class HomeScreen extends StatelessWidget {
                             padding: EdgeInsets.symmetric(horizontal: 16.w),
                             shrinkWrap: true,
                             physics: const NeverScrollableScrollPhysics(),
-                            itemCount:
-                                state.isLoading ? 3 : state.displayedStadiums.length,
+                            itemCount: state.isLoading
+                                ? 3
+                                : state.displayedStadiums.length,
                             itemBuilder: (context, index) {
                               if (state.isLoading) {
                                 return const StadiumBookingCardSkeleton();
@@ -69,7 +70,7 @@ class HomeScreen extends StatelessWidget {
                                 location: item.location,
                                 imageUrl: item.coverImage,
                                 rating: item.rating,
-                                onTap: () {
+                                onBookTap: () {
                                   Navigator.pushNamed(
                                     context,
                                     RouteNames.stadiumDetailsScreen,
